@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES6",
     "outDir": "dist/",
-    "module": "esnext",
+    "module": "commonjs",
     "baseUrl": ".",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
