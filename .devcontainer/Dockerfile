@@ -19,23 +19,9 @@ RUN apt-get update \
 
 USER codespace
 
-# Install nvm
-RUN wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-
-ENV NVM_DIR=/root/.nvm
-ENV NODE_VERSIOn 16.13.0
-
-# TODO:
-# Setup NVM
-# install node and npm
-# RUN source $NVM_DIR/nvm.sh \
-#     && nvm install $NODE_VERSION \
-#     && nvm alias default $NODE_VERSION \
-#     && nvm use default
-
-# add node and npm to path so the commands are available
-ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
-ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
+# Install node 16.13
+RUN curl -sL https://deb.nodesource.com/setup_16.13.x | bash - \
+    && apt-get install -y nodejs
 
 # confirm installation
 RUN node -v
