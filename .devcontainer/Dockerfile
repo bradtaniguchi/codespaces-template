@@ -26,9 +26,9 @@ ENV NVM_DIR=/root/.nvm
 
 # Setup NVM
 RUN . $HOME/.nvm/nvm.sh \
-  && nvm use \
   && nvm install --lts \
-  && nvm alias default node
+  && nvm alias default node \
+  && nvm use default
 
 # install npm packages
 RUN npm ci \
