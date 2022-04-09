@@ -25,7 +25,6 @@ RUN wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | 
 # Setup NVM
 RUN nvm use \
     && nvm install \
-    && npm config delete prefix \
     && nvm alias default node
 
 # install npm packages
