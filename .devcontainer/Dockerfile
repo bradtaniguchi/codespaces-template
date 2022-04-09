@@ -22,10 +22,13 @@ USER codespace
 # Install nvm
 RUN wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 
+ENV NVM_DIR=/root/.nvm
+
 # Setup NVM
-RUN nvm use \
-    && nvm install --lts \
-    && nvm alias default node
+RUN . $HOME/.nvm/nvm.sh \
+  && nvm use \
+  && nvm install --lts \
+  && nvm alias default node
 
 # install npm packages
 RUN npm ci \
