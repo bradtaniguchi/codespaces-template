@@ -32,8 +32,7 @@ RUN . $HOME/.nvm/nvm.sh \
 
 # install npm packages
 RUN npm ci \
-    && npm i -g @nrwl/cli \
-    && npm i -g nx
+    && npm i -g @nrwl/cli nx yarn
 
 # update git settings
 RUN git fetch
