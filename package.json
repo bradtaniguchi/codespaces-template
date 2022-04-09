@@ -1,0 +1,9 @@
+{
+  "name": "codespaces-template",
+  "version": "0.0.0",
+  "description": "Defines codespace environment setup for ts based repos",
+  "repository": "git@github.com:bradtaniguchi/codespaces-template.git",
+  "author": "Brad Taniguchi <bradtaniguchi@gmail.com>",
+  "license": "MIT",
+  "private": true
+}
