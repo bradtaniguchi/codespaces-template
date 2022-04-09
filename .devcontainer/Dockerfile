@@ -3,6 +3,9 @@
 # https://github.com/microsoft/vscode-dev-containers
 FROM mcr.microsoft.com/vscode/devcontainers/universal:1-linux
 
+# Replace shell with bash so we can source files
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+
 USER root
 
 # install dependencies here
@@ -23,12 +26,22 @@ USER codespace
 RUN wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 
 ENV NVM_DIR=/root/.nvm
+ENV NODE_VERSIOn 16.13.0
 
 # Setup NVM
-RUN . $HOME/.nvm/nvm.sh \
-  && nvm install --lts \
-  && nvm alias default node \
-  && nvm use default
+# install node and npm
+RUN source $NVM_DIR/nvm.sh \
+    && nvm install $NODE_VERSION \
+    && nvm alias default $NODE_VERSION \
+    && nvm use default
+
+# add node and npm to path so the commands are available
+ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
+ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
+
+# confirm installation
+RUN node -v
+RUN npm -v
 
 # install npm packages
 RUN npm ci \
