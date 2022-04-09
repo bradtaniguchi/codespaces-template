@@ -20,7 +20,7 @@ RUN apt-get update \
 USER codespace
 
 # Install node 16.13
-RUN curl -sL https://deb.nodesource.com/setup_16.13.x | bash - \
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - \
     && apt-get install -y nodejs
 
 # confirm installation
